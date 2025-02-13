@@ -324,12 +324,7 @@ sped = true
 			HumanModCons.wsLoop = (HumanModCons.wsLoop and HumanModCons.wsLoop:Disconnect() and false) or Human:GetPropertyChangedSignal("WalkSpeed"):Connect(WalkSpeedChange)
 		end)
 	end
-
-end
-end)
-
-Sped.MouseButton1Click:Connect(function()
-if sped == true then
+elseif sped == true then
 Sped.Text = "Speed: No" 
 sped = false
 	HumanModCons.wsLoop = (HumanModCons.wsLoop and HumanModCons.wsLoop:Disconnect() and false) or nil
@@ -339,6 +334,8 @@ game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = 16
 end
 end
 end)
+
+
 
 Sped.MouseButton1Click:Connect(function()
 local soun2 = Instance.new("Sound",game:GetService("Workspace"))

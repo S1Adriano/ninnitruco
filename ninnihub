@@ -1,4 +1,26 @@
-lplayer = game:GetService("Players").LocalPlayer
+if game.CoreGui:FindFirstChild("Ninni") then
+game.CoreGui:FindFirstChild("Ninni"):Destroy()
+end
+local mouse = game.Players.LocalPlayer:GetMouse()
+for i,x in next, game.Players:GetPlayers() do
+if x.Character:FindFirstChild("HumanoidRootPart") then
+if x.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("WASAX")==nil then
+if x.Character:FindFirstChild("Knife") then
+local mommy = Instance.new("BoxHandleAdornment")
+mommy.Name = "WASAX"
+mommy.Parent = x.Character:FindFirstChild("HumanoidRootPart")
+mommy.Adornee = x.Character:FindFirstChild("HumanoidRootPart")
+mommy.AlwaysOnTop = true
+mommy.ZIndex = 1
+mommy.Size = Vector3.new(1,2,1)
+mommy.Transparency = 0.4
+mommy.Color = BrickColor.new("Bright red")
+end
+end
+end
+end
+
+ lplayer = game:GetService("Players").LocalPlayer
 
 function GetPlayer(String) -- yes
 	local Found = {}
@@ -12,6 +34,12 @@ function GetPlayer(String) -- yes
 	elseif strl == "others" then
 		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
 			if v.Name ~= lplayer.Name then
+				table.insert(Found,v)
+			end
+		end  
+        	elseif strl == "nofriends" then
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if not v:IsFriendsWith(lplayer.UserId) and v.Name ~= lplayer.Name then
 				table.insert(Found,v)
 			end
 		end  
@@ -122,6 +150,23 @@ Close.TextWrapped = true
 Close.MouseButton1Click:Connect(function()
 OpenM.Visible = true
 Gui.Visible = false
+for i,x in next, game.Players:GetPlayers() do
+if x.Character:FindFirstChild("HumanoidRootPart") then
+if x.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("WASAX")==nil then
+if x.Character:FindFirstChild("Knife") then
+local mommy = Instance.new("BoxHandleAdornment")
+mommy.Name = "WASAX"
+mommy.Parent = x.Character:FindFirstChild("HumanoidRootPart")
+mommy.Adornee = x.Character:FindFirstChild("HumanoidRootPart")
+mommy.AlwaysOnTop = true
+mommy.ZIndex = 1
+mommy.Size = Vector3.new(1,2,1)
+mommy.Transparency = 0.4
+mommy.Color = BrickColor.new("Bright red")
+end
+end
+end
+end
 end)
 
 Close.MouseButton1Click:Connect(function()
@@ -156,6 +201,23 @@ AutoF.TextColor3 = Color3.fromRGB(255, 255, 255)
 AutoF.TextSize = 24.000
 AutoF.TextWrapped = true
 AutoF.MouseButton1Click:Connect(function()
+for i,x in next, game.Players:GetPlayers() do
+if x.Character:FindFirstChild("HumanoidRootPart") then
+if x.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("WASAX")==nil then
+if x.Character:FindFirstChild("Knife") then
+local mommy = Instance.new("BoxHandleAdornment")
+mommy.Name = "WASAX"
+mommy.Parent = x.Character:FindFirstChild("HumanoidRootPart")
+mommy.Adornee = x.Character:FindFirstChild("HumanoidRootPart")
+mommy.AlwaysOnTop = true
+mommy.ZIndex = 1
+mommy.Size = Vector3.new(1,2,1)
+mommy.Transparency = 0.4
+mommy.Color = BrickColor.new("Bright red")
+end
+end
+end
+end
 local cpus = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 local list = 1
 for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
@@ -170,7 +232,6 @@ list=list+1
 wait(0.4)
 elseif list >= 8 then
 list = 0
-wait()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = cpus
 end 
 end
@@ -188,7 +249,7 @@ end
 end
 end
 ----
-
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = cpus
 
 end
 end
@@ -219,6 +280,23 @@ Sped.TextColor3 = Color3.fromRGB(255, 255, 255)
 Sped.TextSize = 24.000
 Sped.TextWrapped = true
 Sped.MouseButton1Click:Connect(function()
+for i,x in next, game.Players:GetPlayers() do
+if x.Character:FindFirstChild("HumanoidRootPart") then
+if x.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("WASAX")==nil then
+if x.Character:FindFirstChild("Knife") then
+local mommy = Instance.new("BoxHandleAdornment")
+mommy.Name = "WASAX"
+mommy.Parent = x.Character:FindFirstChild("HumanoidRootPart")
+mommy.Adornee = x.Character:FindFirstChild("HumanoidRootPart")
+mommy.AlwaysOnTop = true
+mommy.ZIndex = 1
+mommy.Size = Vector3.new(1,2,1)
+mommy.Transparency = 0.4
+mommy.Color = BrickColor.new("Bright red")
+end
+end
+end
+end
 if sped == false then
 Sped.Text = "Speed: Yes" 
 sped = true
@@ -354,6 +432,14 @@ Tpp.MouseButton1Click:Connect(function()
 	end
 end)
 
+Tpp.MouseButton1Click:Connect(function()
+local soun2 = Instance.new("Sound",game:GetService("Workspace"))
+soun2.SoundId = "rbxassetid://9080070218"
+soun2:Play()
+wait(1)
+soun2:Destroy()
+end)
+
 UICorner_9.Parent = Tpp
 
 
@@ -392,3 +478,15 @@ soun:Destroy()
 end)
 
 UICorner_11.Parent = openbutton
+
+mouse.KeyDown:Connect(function(key)
+    if key == "x" then
+if Gui.Visible == true then
+Gui.Visible = false
+OpenM.Visible = true
+else
+Gui.Visible = true
+OpenM.Visible = false
+end
+    end
+    end)

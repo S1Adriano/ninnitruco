@@ -340,10 +340,9 @@ Jump.TextWrapped = true
 Jump.MouseButton1Click:Connect(function()
 for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
 if v.Parent.Name == "Exits" then
-local cpus = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Trigger.CFrame
-wait(0.4)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = cpus
+wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Trigger.CFrame
 end
 end
 end)

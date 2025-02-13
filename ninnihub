@@ -1,6 +1,13 @@
 if game.CoreGui:FindFirstChild("Ninni") then
 game.CoreGui:FindFirstChild("Ninni"):Destroy()
 end
+local HumanModCons = {}
+local speed = 35
+function isNumber(str)
+if tonumber(str) ~= nil or str == 'inf' then
+		return true
+end
+end
 local mouse = game.Players.LocalPlayer:GetMouse()
 for i,x in next, game.Players:GetPlayers() do
 if x.Character:FindFirstChild("HumanoidRootPart") then
@@ -297,19 +304,39 @@ end
 end
 end
 end
+
 if sped == false then
 Sped.Text = "Speed: Yes" 
 sped = true
-if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = 35
+	if isNumber(speed) then
+		local Char = game.Players.LocalPlayer.Character or game:GetService("Workspace"):FindFirstChild(game.Players.LocalPlayer.Name)
+		local Human = Char and Char:FindFirstChildWhichIsA("Humanoid")
+		local function WalkSpeedChange()
+			if Char and Human then
+				Human.WalkSpeed = speed
+			end
+		end
+		WalkSpeedChange()
+		HumanModCons.wsLoop = (HumanModCons.wsLoop and HumanModCons.wsLoop:Disconnect() and false) or Human:GetPropertyChangedSignal("WalkSpeed"):Connect(WalkSpeedChange)
+		HumanModCons.wsCA = (HumanModCons.wsCA and HumanModCons.wsCA:Disconnect() and false) or speaker.CharacterAdded:Connect(function(nChar)
+			Char, Human = nChar, nChar:WaitForChild("Humanoid")
+			WalkSpeedChange()
+			HumanModCons.wsLoop = (HumanModCons.wsLoop and HumanModCons.wsLoop:Disconnect() and false) or Human:GetPropertyChangedSignal("WalkSpeed"):Connect(WalkSpeedChange)
+		end)
+	end
+
 end
-elseif sped == true then
+end)
+
+Sped.MouseButton1Click:Connect(function()
+if sped == true then
 Sped.Text = "Speed: No" 
 sped = false
+	HumanModCons.wsLoop = (HumanModCons.wsLoop and HumanModCons.wsLoop:Disconnect() and false) or nil
+	HumanModCons.wsCA = (HumanModCons.wsCA and HumanModCons.wsCA:Disconnect() and false) or nil
 if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
 game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = 16
 end
-
 end
 end)
 

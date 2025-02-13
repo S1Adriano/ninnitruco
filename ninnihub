@@ -1,0 +1,394 @@
+lplayer = game:GetService("Players").LocalPlayer
+
+function GetPlayer(String) -- yes
+	local Found = {}
+	local strl = String:lower()
+	if strl == "all" then
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name ~= lplayer.Name then
+				table.insert(Found,v)
+			end
+		end  
+	elseif strl == "others" then
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name ~= lplayer.Name then
+				table.insert(Found,v)
+			end
+		end  
+	elseif strl == "me" then
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name == lplayer.Name then
+				table.insert(Found,v)
+			end
+		end  
+	else
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name:lower():sub(1, #String) == String:lower() then
+				table.insert(Found,v)
+			end
+		end    
+	end
+	return Found    
+end
+
+local Ninni = Instance.new("ScreenGui")
+local Gui = Instance.new("Frame")
+local Tittle = Instance.new("Frame")
+local Titulo = Instance.new("TextLabel")
+local Close = Instance.new("TextButton")
+local Main = Instance.new("Frame")
+local AutoF = Instance.new("TextButton")
+local Sped = Instance.new("TextButton")
+local Jump = Instance.new("TextButton")
+local Kill = Instance.new("TextButton")
+local Box = Instance.new("TextBox")
+local Tpp = Instance.new("TextButton")
+local OpenM = Instance.new("Frame")
+local openbutton = Instance.new("TextButton")
+
+
+--- Ui Corners 
+
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
+local UICorner_3 = Instance.new("UICorner")
+local UICorner_4 = Instance.new("UICorner")
+local UICorner_5 = Instance.new("UICorner")
+local UICorner_6 = Instance.new("UICorner")
+local UICorner_7 = Instance.new("UICorner")
+local UICorner_8 = Instance.new("UICorner")
+local UICorner_9 = Instance.new("UICorner")
+local UICorner_10 = Instance.new("UICorner")
+local UICorner_11 = Instance.new("UICorner")
+
+---
+
+
+
+Ninni.Name = "Ninni"
+Ninni.Parent = game.CoreGui
+Ninni.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Gui.Name = "Gui"
+Gui.Parent = Ninni
+Gui.BackgroundColor3 = Color3.fromRGB(227, 139, 184)
+Gui.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Gui.BorderSizePixel = 0
+Gui.Position = UDim2.new(0.178481007, 0, 0.160099499, 0)
+Gui.Size = UDim2.new(0, 652, 0, 380)
+Gui.Draggable = true
+Gui.Active = true
+
+UICorner.Parent = Gui
+
+Tittle.Name = "Tittle"
+Tittle.Parent = Gui
+Tittle.BackgroundColor3 = Color3.fromRGB(223, 122, 174)
+Tittle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Tittle.BorderSizePixel = 0
+Tittle.Position = UDim2.new(0.0230061356, 0, 0.037128713, 0)
+Tittle.Size = UDim2.new(0, 621, 0, 37)
+
+UICorner_2.Parent = Tittle
+
+Titulo.Name = "Titulo"
+Titulo.Parent = Tittle
+Titulo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Titulo.BackgroundTransparency = 1.000
+Titulo.Position = UDim2.new(-0.03, 0, -0.01, 0)
+Titulo.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Titulo.BorderSizePixel = 0
+Titulo.Size = UDim2.new(0, 300, 0, 40)
+Titulo.Font = Enum.Font.Unknown
+Titulo.Text = "Ninni's x Adri Hub"
+Titulo.TextColor3 = Color3.fromRGB(255, 255, 255)
+Titulo.TextSize = 23.000
+Titulo.TextWrapped = true
+
+Close.Name = "Close"
+Close.Parent = Tittle
+Close.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Close.BackgroundTransparency = 1.000
+Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.943639278, 0, 0, 0)
+Close.Size = UDim2.new(0, 35, 0, 37)
+Close.Font = Enum.Font.Unknown
+Close.Text = "X"
+Close.TextColor3 = Color3.fromRGB(180, 0, 0)
+Close.TextScaled = true
+Close.TextSize = 14.000
+Close.TextWrapped = true
+Close.MouseButton1Click:Connect(function()
+OpenM.Visible = true
+Gui.Visible = false
+end)
+
+Close.MouseButton1Click:Connect(function()
+local soun2 = Instance.new("Sound",game:GetService("Workspace"))
+soun2.SoundId = "rbxassetid://6042053626"
+soun2:Play()
+wait(1)
+soun2:Destroy()
+end)
+
+Main.Name = "Main"
+Main.Parent = Gui
+Main.BackgroundColor3 = Color3.fromRGB(223, 122, 174)
+Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.0227788445, 0, 0.151334926, 0)
+Main.Size = UDim2.new(0, 621, 0, 310)
+
+
+UICorner_3.Parent = Main
+
+AutoF.Name = "AutoF"
+AutoF.Parent = Main
+AutoF.BackgroundColor3 = Color3.fromRGB(227, 139, 184)
+AutoF.BorderColor3 = Color3.fromRGB(0, 0, 0)
+AutoF.BorderSizePixel = 0
+AutoF.Position = UDim2.new(0.0305958129, 0, 0.106451616, 0)
+AutoF.Size = UDim2.new(0, 163, 0, 46)
+AutoF.Font = Enum.Font.SourceSansBold
+AutoF.Text = "Auto Farm"
+AutoF.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoF.TextSize = 24.000
+AutoF.TextWrapped = true
+AutoF.MouseButton1Click:Connect(function()
+local cpus = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+local list = 1
+for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+if v.Parent.Name == "LootSpawns" then
+if v:IsA("MeshPart") then
+-----
+if v.Model:FindFirstChild("Handle") then
+if v.Model:FindFirstChild("Handle").Transparency == 0 then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.LootProxBlock.CFrame + v.LootProxBlock.CFrame.LookVector*0
+if list >= 1 and list <= 8 then 
+list=list+1
+wait(0.4)
+elseif list >= 8 then
+list = 0
+wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = cpus
+end 
+end
+end
+    if v.Model:FindFirstChildOfClass("MeshPart") then
+if v.Model:FindFirstChildOfClass("MeshPart").Transparency == 0 then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.LootProxBlock.CFrame + v.LootProxBlock.CFrame.LookVector*0
+if list >= 1 and list <= 8 then 
+list=list+1
+wait(0.4)
+elseif list >= 8 then
+list = 0
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = cpus
+end 
+end
+end
+----
+
+
+end
+end
+end
+end)
+
+AutoF.MouseButton1Click:Connect(function()
+local soun2 = Instance.new("Sound",game:GetService("Workspace"))
+soun2.SoundId = "rbxassetid://9080070218"
+soun2:Play()
+wait(1)
+soun2:Destroy()
+end)
+
+UICorner_4.Parent = AutoF
+
+local sped = false
+Sped.Name = "Sped"
+Sped.Parent = Main
+Sped.BackgroundColor3 = Color3.fromRGB(227, 139, 184)
+Sped.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Sped.BorderSizePixel = 0
+Sped.Position = UDim2.new(0.355877608, 0, 0.106451616, 0)
+Sped.Size = UDim2.new(0, 163, 0, 46)
+Sped.Font = Enum.Font.SourceSansBold
+Sped.Text = "Speed: No"
+Sped.TextColor3 = Color3.fromRGB(255, 255, 255)
+Sped.TextSize = 24.000
+Sped.TextWrapped = true
+Sped.MouseButton1Click:Connect(function()
+if sped == false then
+Sped.Text = "Speed: Yes" 
+sped = true
+if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = 35
+end
+elseif sped == true then
+Sped.Text = "Speed: No" 
+sped = false
+if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = 16
+end
+
+end
+end)
+
+Sped.MouseButton1Click:Connect(function()
+local soun2 = Instance.new("Sound",game:GetService("Workspace"))
+soun2.SoundId = "rbxassetid://9080070218"
+soun2:Play()
+wait(1)
+soun2:Destroy()
+end)
+
+UICorner_5.Parent = Sped
+
+
+
+Jump.Name = "Jump"
+Jump.Parent = Main
+Jump.BackgroundColor3 = Color3.fromRGB(227, 139, 184)
+Jump.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Jump.BorderSizePixel = 0
+Jump.Position = UDim2.new(0.681159437, 0, 0.106451616, 0)
+Jump.Size = UDim2.new(0, 163, 0, 46)
+Jump.Font = Enum.Font.SourceSansBold
+Jump.Text = "Go to Exit"
+Jump.TextColor3 = Color3.fromRGB(255, 255, 255)
+Jump.TextSize = 24.000
+Jump.TextWrapped = true
+Jump.MouseButton1Click:Connect(function()
+for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+if v.Parent.Name == "Exits" then
+local cpus = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Trigger.CFrame
+wait(0.4)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = cpus
+end
+end
+end)
+
+Jump.MouseButton1Click:Connect(function()
+local soun2 = Instance.new("Sound",game:GetService("Workspace"))
+soun2.SoundId = "rbxassetid://9080070218"
+soun2:Play()
+wait(1)
+soun2:Destroy()
+end)
+
+UICorner_6.Parent = Jump
+
+Kill.Name = "Kill"
+Kill.Parent = Main
+Kill.BackgroundColor3 = Color3.fromRGB(227, 139, 184)
+Kill.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Kill.BorderSizePixel = 0
+Kill.Position = UDim2.new(0.0305958129, 0, 0.806451619, 0)
+Kill.Size = UDim2.new(0, 163, 0, 46)
+Kill.Font = Enum.Font.SourceSansBold
+Kill.Text = "Kill (Player)"
+Kill.TextColor3 = Color3.fromRGB(255, 255, 255)
+Kill.TextSize = 24.000
+Kill.TextWrapped = true
+Kill.MouseButton1Click:Connect(function()
+	for i,v in pairs(GetPlayer(Box.Text)) do
+        if game.Players[v.Name].Character:FindFirstChild("HumanoidRootPart") then
+        game.Players[v.Name].Character.HumanoidRootPart.Anchored = true
+        game.Players[v.Name].Character.HumanoidRootPart.Size = Vector3.new(4,6,4)
+		game.Players[v.Name].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector*1
+        game.Players[v.Name].Character.HumanoidRootPart.Anchored = true
+        end
+	end
+            wait(0.3)
+    	for i,v in pairs(GetPlayer(Box.Text)) do
+        if game.Players[v.Name].Character:FindFirstChild("HumanoidRootPart") then
+        game.Players[v.Name].Character.HumanoidRootPart.Size = Vector3.new(1,2,1)
+game.Players[v.Name].Character.HumanoidRootPart.Anchored = false
+        end
+	end
+end)
+
+Kill.MouseButton1Click:Connect(function()
+local soun2 = Instance.new("Sound",game:GetService("Workspace"))
+soun2.SoundId = "rbxassetid://9080070218"
+soun2:Play()
+wait(1)
+soun2:Destroy()
+end)
+
+UICorner_7.Parent = Kill
+
+Box.Name = "Box"
+Box.Parent = Main
+Box.BackgroundColor3 = Color3.fromRGB(227, 139, 184)
+Box.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Box.BorderSizePixel = 0
+Box.Position = UDim2.new(0.639291465, 0, 0.793548405, 0)
+Box.Size = UDim2.new(0, 200, 0, 50)
+Box.Font = Enum.Font.SourceSansSemibold
+Box.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
+Box.Text = ""
+Box.TextColor3 = Color3.fromRGB(255, 255, 255)
+Box.TextSize = 21.000
+
+UICorner_8.Parent = Box
+
+Tpp.Name = "Tpp"
+Tpp.Parent = Main
+Tpp.BackgroundColor3 = Color3.fromRGB(227, 139, 184)
+Tpp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Tpp.BorderSizePixel = 0
+Tpp.Position = UDim2.new(0.32367149, 0, 0.806451619, 0)
+Tpp.Size = UDim2.new(0, 163, 0, 46)
+Tpp.Font = Enum.Font.SourceSansBold
+Tpp.Text = "Tp (Player)"
+Tpp.TextColor3 = Color3.fromRGB(255, 255, 255)
+Tpp.TextSize = 24.000
+Tpp.TextWrapped = true
+Tpp.MouseButton1Click:Connect(function()
+	for i,v in pairs(GetPlayer(Box.Text)) do
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[v.Name].Character.HumanoidRootPart.CFrame
+        wait(0.1)
+	end
+end)
+
+UICorner_9.Parent = Tpp
+
+
+
+OpenM.Name = "OpenM"
+OpenM.Parent = Ninni
+OpenM.BackgroundColor3 = Color3.fromRGB(227, 139, 184)
+OpenM.BorderColor3 = Color3.fromRGB(0, 0, 0)
+OpenM.BorderSizePixel = 0
+OpenM.Position = UDim2.new(0, 0, 0.463930339, 0)
+OpenM.Size = UDim2.new(0, 59, 0, 58)
+OpenM.Visible = false
+
+UICorner_10.Parent = OpenM
+
+openbutton.Name = "openbutton"
+openbutton.Parent = OpenM
+openbutton.BackgroundColor3 = Color3.fromRGB(223, 122, 174)
+openbutton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+openbutton.BorderSizePixel = 0
+openbutton.Position = UDim2.new(0.0953766778, 0, 0.064719364, 0)
+openbutton.Size = UDim2.new(0, 47, 0, 50)
+openbutton.Font = Enum.Font.JosefinSans
+openbutton.Text = "Open"
+openbutton.TextColor3 = Color3.fromRGB(255, 255, 255)
+openbutton.TextSize = 13.000
+openbutton.TextWrapped = true
+openbutton.MouseButton1Click:Connect(function()
+OpenM.Visible = false
+Gui.Visible = true
+local soun = Instance.new("Sound",game:GetService("Workspace"))
+soun.SoundId = "rbxassetid://174437226"
+soun:Play()
+wait(2)
+soun:Destroy()
+end)
+
+UICorner_11.Parent = openbutton
